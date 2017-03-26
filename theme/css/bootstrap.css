@@ -36,10 +36,16 @@ audio,
 canvas,
 progress,
 video {
-  display: block;
-  margin: auto;
-  vertical-align: middle;
+    /* display: inline-block; */
+    /* vertical-align: baseline; */
 }
+
+video.center {
+    display: block;
+    margin: auto;
+}
+
+
 audio:not([controls]) {
   display: none;
   height: 0;
