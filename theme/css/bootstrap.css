@@ -43,7 +43,7 @@ video {
 video.center {
     display: block;
     margin: auto;
-    vertical-align: ;
+    vertical-align: center;
 }
 
 
