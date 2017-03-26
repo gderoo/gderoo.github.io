@@ -154,6 +154,11 @@ img {
     max-width: 650;
 }
 
+img.center {
+    display: block;
+    margin: auto;
+}
+
 body ol {
   margin: 1em 0;
   padding: 0 0 0 40px;
