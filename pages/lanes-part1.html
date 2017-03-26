@@ -51,7 +51,56 @@
   </footer><!-- /.post-info -->
   <br>
   <div class="entry-content">
-    <p>This is a repost of my original at our <a href="http://www.uvm.edu/storylab/2016/11/07/emotional-arcs/">StoryLab blog</a>_</p>
+      
+      <p>This is an overview of the first project of the Udacity class. In this project, we use a series of tools to identify lane lines on the road.</p>
+      
+      <p> There are 5 main steps of the image pipeline:
+      <ul>
+          <li>image was converted to grayscale</li>
+          <li>edges were calculated with the Canny edge method</li>
+          <li>picture was masked to focus on a bottom part</li>
+          <li>lines were calculated in the Hough Space</li>
+          <li>finally, we "average" the lines found in the hough space (using a regression)</li>
+      </ul></p>
+      
+      
+      <img class="img-responsive" src="/media/lanes-part1/original.png">
+        <img class="img-responsive" src="/media/lanes-part1/cannyedge.png">
+        <img class="img-responsive" src="/media/lanes-part1/houghlines.png">
+        <img class="img-responsive" src="/media/lanes-part1/output.png">
+      
+      <video width="320" height="240" controls>
+          <source src="/media/lanes-part1/lanevideo.mp4" type="video/mp4">
+      </video>
+      
+      
+      <p>There are still several shortcomings:
+      <ul>
+      <li> despite the tinkering, it still feels that the dotted lines are hard to capture during the HoughLine step </li>
+      <li> if the line turns too much and lines cross the middle, the solution will not work </li>
+      </ul></p>
+      
+      <p>Possible improvements would be to:
+      <li> limit the angles of the Hough Lines</li>
+      <li> try to do the regression at the end of the canny edge step directly</li>
+      <li> use the continuity of directions to stabilize the algorithm (i.e. reduce variance and introduce some bias) </li>
+      <li> at each image, we calculate the lines, together with a confidence probability (the longer the Hough Lines, the more confidence we have)</li>
+      <li> At time t, the lines are then given by doing a weighted average of the lines of Image t, but also Image t-1 and Image t-2 for instance </li>
+      </ul></p>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    This is a repost of my original at our <a href="http://www.uvm.edu/storylab/2016/11/07/emotional-arcs/">StoryLab blog</a>_</p>
 <p>Stories help us encode and understand our collective existence, underpin cultures, and help frame the possible. Describing the ecology of all human stories is an essential scientific enterprise. With the advent of the internet and massive digitization this vital work has become, in part, a data-driven one.</p>
 <p>There are many aspects of stories to characterize and here we take on just one: The overall emotional trajectory.</p>
 <p>In a lecture recorded in 1985, Kurt Vonnegut introduced the idea of quantifying the emotional arcs of stories. He suggested that “Man-in-a-hole” is a primary kind of shape in the dimension of good-ill fortune. “Somebody gets into trouble… gets out of it again. People LOVE that story!” If you haven’t seen the video, it’s less than 5 minutes long and a rewarding experience:</p>
