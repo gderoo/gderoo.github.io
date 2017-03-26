@@ -64,6 +64,7 @@
       </ul></p>
       
       <p>If the line turns too much and lines cross the middle, the current solution will not work. Possible improvements would be to:
+      <ul>
       <li> limit the angles of the Hough Lines</li>
       <li> try to do the regression at the end of the canny edge step directly</li>
       <li> use the continuity of directions to stabilize the algorithm (i.e. reduce variance and introduce some bias) </li>
@@ -73,12 +74,12 @@
       This will be the object of part 2</p>
       
       
-      <img class="img-responsive" src="/media/lanes-part1/original.png">
+      <img class="img-responsive" src="/media/lanes-part1/original.png" align="middle">
         <img class="img-responsive" src="/media/lanes-part1/cannyedge.png">
         <img class="img-responsive" src="/media/lanes-part1/houghlines.png">
         <img class="img-responsive" src="/media/lanes-part1/output.png">
       
-      <video controls>
+      <video width="320" height="240" controls>
           <source src="/media/lanes-part1/lanevideo.mp4" type="video/mp4">
       </video>
       
