@@ -75,13 +75,15 @@
         <img class="center" src="/media/lanes-part1/houghlines.png">
         <img class="center" src="/media/lanes-part1/output.png">
       
-      <p>If the line turns too much and lines cross the middle, the current solution will not work. Possible improvements would be to:
+      <p>If the line turns too much and lines cross the middle, the current solution does not work. Possible improvements would be to:
       <ul>
           <li> limit the angles of the Hough Lines</li>
-          <li> try to do the regression at the end of the canny edge step directly</li>
-          <li> use the continuity of directions to stabilize the algorithm (i.e. reduce variance and introduce some bias) </li>
-          <li> at each image, we calculate the lines, together with a confidence probability (the longer the Hough Lines, the more confidence we have)</li>
-          <li> At time t, the lines are then given by doing a weighted average of the lines of Image t, but also Image t-1 and Image t-2 for instance </li>
+          <li> do the regression at the end of the canny edge step directly</li>
+          <li> use the continuity of directions to stabilize the algorithm <ul>
+              <li> at each image, we calculate the lines, together with a confidence probability (the longer the Hough Lines, the more confidence we have)</li>
+              <li> At time t, the lines are then given by doing a weighted average of the lines of Image t, but also Image t-1 and Image t-2 for instance </li>
+              </ul>
+          </li>
       </ul>
       This will probably be the object of a future project in the degree</p>
       
