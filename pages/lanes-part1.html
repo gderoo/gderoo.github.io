@@ -64,7 +64,7 @@
       <p> There are 5 main steps of the image pipeline: <ul>
           <li>image is converted to grayscale</li>
           <li>edges are calculated with the Canny edge method</li>
-          <li>picture is masked to focus the lane search on a trapezoid in the bottom part</li>
+          <li>a trapezoid mask is applied to focus the lane search</li>
           <li>lines are found using the Hough Space</li>
           <li>finally, we "average" the lines found using a regression</li>
       </ul>
@@ -80,7 +80,7 @@
           <li> limit the angles of the Hough Lines</li>
           <li> do the regression at the end of the canny edge step directly</li>
           <li> use the continuity of directions to stabilize the algorithm <ul>
-              <li> at each image, we calculate the lines, together with a confidence probability (the longer the Hough Lines, the more confidence we have)</li>
+              <li> for each image, we calculate the lines, together with a confidence probability (longer lines result in higher confidence)</li>
               <li> At time t, the lines are then given by doing a weighted average of the lines of Image t, but also Image t-1 and Image t-2 for instance </li>
               </ul>
           </li>
