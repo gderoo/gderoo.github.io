@@ -41,6 +41,7 @@ video {
 }
 
 video.center {
+    position: relative;
     display: block;
     margin: auto;
     vertical-align: center;
