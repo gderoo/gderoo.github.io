@@ -81,11 +81,11 @@
           <li> do the regression at the end of the canny edge step directly</li>
           <li> use the continuity of directions to stabilize the algorithm <ul>
               <li> for each image, we calculate the lines, together with a confidence probability (longer lines result in higher confidence)</li>
-              <li> At time t, the lines are then given by doing a weighted average of the lines of Image t, but also Image t-1 and Image t-2 for instance </li>
+              <li> At time t, the ouput lines are given by average the lines of Image t, t-1 and t-2 (for instance) weighted by the confidence and other weights </li>
               </ul>
           </li>
       </ul>
-      This will probably be the object of a future project in the degree</p>
+      A more thorough solution to that problem will be built later in the degree</p>
       
       <p><a href="https://github.com/gderoo/self_driving_car/tree/master/Project%201%20-%20Lanes" target="_blank">GitHub code</a></p>
 
