@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    <head>
+        <title>gderoo</title>
+        <meta charset="utf-8" />
+        <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+            
+        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/beemuse.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
+    </head>
+    
+    <body>
+        
+        <section id="navbar">
+            <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/index.html">gderoo</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/pages/menu.html">Home</a></li>
+                            <li><a href="/pages/about-me.html">About Me</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </section>
+        
+        <br>
+        <section class="content">
+            <div class="row">
+                
+                <div class="col-xs-12 col-md-8  col-md-offset-2 col-lg-6 col-lg-offset-3">
+                    
+                    <div class="paper">
+                        <header>
+                            <h2 class="entry-title">Facial Keypoints Detection</h2>
+                            
+                        </header>
+                        <footer class="post-info">
+                            <b>December 2016</b>
+                        </footer><!-- /.post-info -->
+                        <br />
+                        <div class="entry-content">
+                            
+                            <p>As part of a Berkeley class on Machine Learning, we entered a Kaggle tutorial competition on <a href="https://www.kaggle.com/c/facial-keypoints-detection">Facial Keypoints detection</a>. The objective of is to predict keypoint positions on face images, which can be used in tracking faces in videos, analysing facial expressions, biometrics, etc.</p>
+                            
+                            <p>The data consists of 7049 images of 96 by 96 pixels. There are 15 facial keypoints to identify, each with 2 coordinates. The dataset is only fully labelled for ~2225 images, with the others only containing 4 features (2 eye centers, nose tip, outh center bottom lip)</p>
+                            
+                            <p> We developed a series of net which reached the top 10% of the competition:</p>
+                            
+                            <table>
+                                <tr>
+                                    <th>Net name</th>
+                                    <th>Nb layers</th>
+                                    <th>Nb parameters</th>
+                                    <th>Training</th>
+                                    <th>Kaggle RMSE</th>
+                                </tr>
+                            </table>
+                            
+                                                                    
+                            <p><a href="https://github.com/gderoo/self_driving_car/tree/master/Project%201%20-%20Lanes" target="_blank">GitHub code</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </section><!-- /#content -->
+        
+        <footer id="slidingfooter" class="body">
+            Original design by Andy Reagan, modified by Guillaume De Roo
+        </footer>
+    </body>
+    </script>
+</html>
