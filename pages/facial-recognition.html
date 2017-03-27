@@ -50,7 +50,7 @@
                             
                             <p>As part of a Berkeley class on Machine Learning, we entered a Kaggle tutorial competition on <a href="https://www.kaggle.com/c/facial-keypoints-detection">Facial Keypoints detection</a>. The objective of is to predict keypoint positions on face images, which can be used in tracking faces in videos, analysing facial expressions, biometrics, etc.</p>
                             
-                            <p>The data consists of 7049 images of 96 by 96 pixels. There are 15 facial keypoints to identify, each with 2 coordinates. The dataset is only fully labelled for ~2225 images, with the others only containing 4 features (2 eye centers, nose tip, outh center bottom lip)</p>
+                            <p>The data consists of 7049 images of 96 by 96 pixels. There are 15 facial keypoints to identify, each with 2 coordinates. The dataset is only fully labelled for ~2225 images, with the others only containing 4 features (2 eye centers, nose tip, mouth center bottom lip)</p>
                             
                             <p> We developed a series of net which reached the top 10% of the competition:</p>
                             
@@ -62,10 +62,58 @@
                                     <th>Training</th>
                                     <th>Kaggle RMSE</th>
                                 </tr>
+                                <tr>
+                                    <td>cnn0</td>
+                                    <td>3</td>
+                                    <td>55,365,306</td>
+                                    <td>1,000ep x 1.42s</td>
+                                    <td>3.55 (71st)</td>
+                                </tr>
+                                <tr>
+                                    <td>cnn6</td>
+                                    <td>8</td>
+                                    <td>13,964,862</td>
+                                    <td>10,000ep x 5.56s</td>
+                                    <td>2.85 (39th)</td>
+                                </tr>
+                                <tr>
+                                    <td>cnn6 specialists <br />(4 main features)</td>
+                                    <td>8</td>
+                                    <td>13,964,862</td>
+                                    <td>extra 500-1,000ep x 18.38s</td>
+                                    <td>2.17 (18th)</td>
+                                </tr>
                             </table>
                             
-                                                                    
-                            <p><a href="https://github.com/gderoo/self_driving_car/tree/master/Project%201%20-%20Lanes" target="_blank">GitHub code</a></p>
+                            <p> We started with a simple neural network with 2 convolution layers and a dense layer represented below</p>
+
+                            <img class="center" src="/media/facial-recognition/cnn0.png">
+
+                            <p> The network quickly overfitted, which led us to use the following methods:
+                            <ul>
+                                <li><b>Data augmentation:<b/> we randomly flipped 50% of the images horizontally between epochs, which had the advantage of not increasing training time</li>
+                                <li><b>Pooling layers:<b/> we used max pooling to reduce the nb of parameters</li>
+                                <li><b>Dropout:<b/> we used dropout to build some redundancy in the network</li>
+                            </ul>
+                            </p>
+
+                            <img class="center" src="/media/facial-recognition/cnn2.png">
+                                
+                            <p> Given the gain in parameters, we then focused later improvements on
+                            <ul>
+                                <li>increasing the depth of the network</li>
+                                <li>fine tuning the training parameters</li>
+                                <li>introducing the notion of specialist networks</li>
+                            </ul>
+                             The idea of the latter point is to use the cnn trained on all features, and keep training it but on a subset of features, to notably take advantage of all 7000 images, and not only the 2200 fully labelled ones.
+                            </p>
+
+                            <img class="center" src="/media/facial-recognition/cnn5-7.png">
+                            <img class="center" src="/media/facial-recognition/training.png">
+                                
+                            <p><a href="https://github.com/gderoo/gderoo.github.io/blob/master/media/facial-recognition/notebook.ipynb" target="_blank">GitHub code</a></p>
+
+
                             </div>
                         </div>
                     </div>
