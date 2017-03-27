@@ -63,6 +63,9 @@
                                     <th>Kaggle RMSE</th>
                                 </tr>
                                 <tr>
+                                    <td colspan="5"><hr/></td>
+                                </tr>
+                                <tr>
                                     <td>cnn0</td>
                                     <td>3</td>
                                     <td>55,365,306</td>
@@ -87,7 +90,7 @@
                             <br />
                             <p> We started with a simple neural network with 2 convolution layers and a dense layer represented below</p>
 
-                            <img class="center" src="/media/facial-recognition/cnn0.png">
+                            <img class="center" src="/media/facial-detection/cnn0.png">
                             <br />
 
                             <p> The network quickly overfitted, which led us to use the following methods:
@@ -98,7 +101,7 @@
                             </ul>
                             </p>
 
-                            <img class="center" src="/media/facial-recognition/cnn2.png">
+                            <img class="center" src="/media/facial-detection/cnn2.png">
                             <br />
                             <p> Given the reduction in the nb of parameters, we focused later improvements on
                             <ul>
@@ -109,9 +112,9 @@
                              The idea of the latter point is to use the cnn trained on all features, and keep training it but on a subset of features, to notably take advantage of all 7000 images, and not only the 2200 fully labelled ones.
                             </p>
 
-                            <img class="center" src="/media/facial-recognition/cnn5-7.png">
+                            <img class="center" src="/media/facial-detection/cnn5-7.png">
                             <br />
-                            <img class="center" src="/media/facial-recognition/training.png">
+                            <img class="center" src="/media/facial-detection/training.png">
                             
                             <br />
                             <p><a href="https://github.com/gderoo/gderoo.github.io/blob/master/media/facial-recognition/notebook.ipynb" target="_blank">GitHub code</a></p>
