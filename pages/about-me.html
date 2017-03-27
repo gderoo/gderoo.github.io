@@ -3,14 +3,13 @@
 <html lang="en">
     
     <head>
-        <title>Menu</title>
+        <title>About Me</title>
         <meta charset="utf-8" />
         <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
         <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="/theme/css/beemuse.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
-
     </head>
     
     <body>
@@ -34,87 +33,23 @@
         
         <section class="content">
             <br>
-            <div class="container">
-                
-                <div class="row">
-                    
-                    <div class="col-xs-12 col-lg-10">
-                        <div class="paper">
-                            <h2>About Me</h2> <br />
-                            
-                            <p>My name is Guillaume De Roo. </p>
-                            <p>I am a Principal at the Boston Consulting Group, pursuing a <a href="https://datascience.berkeley.edu/academics/curriculum/">Master in Data Science</a> at Berkeley on the side, together with Udacity's <a href="https://medium.com/self-driving-cars/term-1-in-depth-on-udacitys-self-driving-car-curriculum-ffcf46af0c08#.1peve05a0">Self-Driving Car Nanodegree</a>. </p>
-                            <p> This website is a collection of various projects done since September 2016, as part of this curriculum / reconversion. Most of them were done using a mix of Python, R, Spark, Hadoop, TensorFlow, D3... </p>
-                        </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+                    <div class="paper">
+                        <h2>CV</h2> <br />
                         
-                        <div id="container">
-                            <div class="item">
-                                <a href="/pages/lanes-part1.html">
-                                    <img src="/media/lanes-part1/vignette.jpg" class="img-responsive blackwhite" />
-                                    <text>Finding lane lines (part 1)</text>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="/pages/twitter-movies.html">
-                                    <img src="/media/twitter-movies/vignette.png" class="img-responsive blackwhite" />
-                                    <text>Twitter movie analytics</text>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="/pages/battery-monitoring.html">
-                                    <img src="/media/battery-monitoring/vignette.png" class="img-responsive blackwhite" />
-                                    <text>Battery storage monitoring (WIP)</text>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="/pages/traffic-signs.html">
-                                    <img src="/media/traffic-signs/vignette.jpg" class="img-responsive blackwhite" />
-                                    <text>Traffic sign recognition (WIP)</text>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="/pages/voter-participation.html">
-                                    <img src="/media/voter-participation/vignette.jpg" class="img-responsive blackwhite" />
-                                    <text>Voter encouragement (WIP)</text>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="/pages/facial-detection.html">
-                                    <img src="/media/facial-detection/vignette.png" class="img-responsive blackwhite" />
-                                    <text>Facial keypoints detection</text>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="/pages/behavioral-cloning.html">
-                                    <img src="/media/behavioral-cloning/vignette.png" class="img-responsive blackwhite" />
-                                    <text>Behavioral cloning (WIP)</text>
-                                </a>
-                            </div>
-                            <!-- </div> -->
-                        </div>
+                        <p><a href="/media/about-me/gderoo-cv.pdf" target="_blank">Download my CV here</a></p> or directly below
+                        
+                        <embed width="100%" height="500" src="/media/about-me/gderoo-cv.pdf#toolbar=0&navpanes=0&scrollbar=0"/>
+                        
                     </div>
                 </div>
-                    
+            </div>
         </section><!-- /#content -->
-        
         
         <footer id="slidingfooter" class="body">
             Original design by Andy Reagan, modified by Guillaume De Roo
         </footer>
-        
-        <script>
-            var container = document.querySelector('#container');
-            var msnry;
-            // initialize Masonry after all images have loaded
-            imagesLoaded( container, function() {
-                         msnry = new Masonry( container );
-                         });
-                         // var msnry = new Masonry( container, {
-                         // options
-                         // columnWidth: 200,
-                         //   itemSelector: '.item'
-                         // });
-        </script>
     </body>
-
+    </script>
 </html>
