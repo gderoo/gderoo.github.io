@@ -84,22 +84,23 @@
                                     <td>2.17 (18th)</td>
                                 </tr>
                             </table>
-                            
+                            <br />
                             <p> We started with a simple neural network with 2 convolution layers and a dense layer represented below</p>
 
                             <img class="center" src="/media/facial-recognition/cnn0.png">
+                            <br />
 
                             <p> The network quickly overfitted, which led us to use the following methods:
                             <ul>
-                                <li><b>Data augmentation:<b/> we randomly flipped 50% of the images horizontally between epochs, which had the advantage of not increasing training time</li>
-                                <li><b>Pooling layers:<b/> we used max pooling to reduce the nb of parameters</li>
-                                <li><b>Dropout:<b/> we used dropout to build some redundancy in the network</li>
+                                <li><b>Data augmentation:</b> we randomly flipped 50% of the images horizontally between epochs, which had the advantage of not increasing training time</li>
+                                <li><b>Pooling layers:</b> we used max pooling to reduce the nb of parameters</li>
+                                <li><b>Dropout:</b> we used dropout to build some redundancy in the network</li>
                             </ul>
                             </p>
 
                             <img class="center" src="/media/facial-recognition/cnn2.png">
-                                
-                            <p> Given the gain in parameters, we then focused later improvements on
+                            <br />
+                            <p> Given the reduction in the nb of parameters, we focused later improvements on
                             <ul>
                                 <li>increasing the depth of the network</li>
                                 <li>fine tuning the training parameters</li>
