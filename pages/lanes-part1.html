@@ -35,8 +35,7 @@
         <section class="content">
             <div class="row">
                 
-                <!--<div class="col-xs-12 col-md-8  col-md-offset-2 col-lg-6 col-lg-offset-3">  -->
-                <div class="col-xs-12 col-lg-10">
+                <div class="col-xs-12 col-md-8  col-md-offset-2 col-lg-6 col-lg-offset-3">
                     
                     <div class="paper">
                         <header>
@@ -68,27 +67,29 @@
                             We illustrate main steps below</p>
                             
                             <img class="center" src="/media/lanes-part1/original.png">
-                                <img class="center" src="/media/lanes-part1/cannyedge.png">
-                                    <img class="center" src="/media/lanes-part1/houghlines.png">
-                                        <img class="center" src="/media/lanes-part1/output.png">
-                                            
-                                            <p>If the lane turns too much, the current solution does not work. Possible improvements would be to:
-                                            <ul>
-                                                <li> limit the angles of the Hough Lines</li>
-                                                <li> do the regression at the end of the canny edge step directly</li>
-                                                <li> use the continuity of directions to stabilize the algorithm <ul>
-                                                    <li> for each image, we calculate the lines, together with a confidence probability (longer lines result in higher confidence)</li>
-                                                    <li> At time t, the ouput lines are given by average the lines of Image t, t-1 and t-2 (for instance) weighted by the confidence and other weights </li>
-                                                </ul>
-                                                </li>
-                                            </ul>
-                                            A more thorough solution to that problem will be built later in the degree</p>
-                                            
-                                            <p><a href="https://github.com/gderoo/self_driving_car/tree/master/Project%201%20-%20Lanes" target="_blank">GitHub code</a></p>
-                                            
-                                            
-                                            </div>      
-                        </section><!-- /#content -->
+                            <img class="center" src="/media/lanes-part1/cannyedge.png">
+                            <img class="center" src="/media/lanes-part1/houghlines.png">
+                            <img class="center" src="/media/lanes-part1/output.png">
+                                
+                            <p>If the lane turns too much, the current solution does not work. Possible improvements would be to:
+                            <ul>
+                                <li> limit the angles of the Hough Lines</li>
+                                <li> do the regression at the end of the canny edge step directly</li>
+                                <li> use the continuity of directions to stabilize the algorithm <ul>
+                                    <li> for each image, we calculate the lines, together with a confidence probability (longer lines result in higher confidence)</li>
+                                    <li> At time t, the ouput lines are given by average the lines of Image t, t-1 and t-2 (for instance) weighted by the confidence and other weights </li>
+                                </ul>
+                                </li>
+                            </ul>
+                            A more thorough solution to that problem will be built later in the degree</p>
+                                        
+                            <p><a href="https://github.com/gderoo/self_driving_car/tree/master/Project%201%20-%20Lanes" target="_blank">GitHub code</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </section><!-- /#content -->
         
         <footer id="slidingfooter" class="body">
             Original design by Andy Reagan, modified by Guillaume De Roo
