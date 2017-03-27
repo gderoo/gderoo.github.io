@@ -55,8 +55,21 @@
                             
                             <img class="center" src="/media/twitter-movies/architecture.png">
                             
-                            <p><b>Extraction layer: </b> We built python programs to ingest data from IMDB, and Twitter's streaming api, using packages such as tweepy.</p>
-                                            
+                            <p>The main features of the pipeline are the following:
+                            <ul>
+                            <li><b>Extraction layer:</b> We built python programs to ingest data from IMDB, and Twitter's streaming api, leveraging packages such as tweepy and imdbpy.</li>
+                            <li><b>Storage layer:</b> We tried different databases learnt in the class. Data extracted from IMDB movie database is persisted to postgres layer. For streaming data, we parse the live json data stream, extract key features, analyze the data and store the results back into a postgres database.</li>
+                            <li><b>Analytics layer:</b> We extract the features of interest from the tweet json (e.g. text, location, etc.), clean the data (e.g. special characters, lemmatization and stemming...), and perform a sentiment analysis.</li>
+                            <li><b>Serving layer:</b> We used Tableau Server, and created visualizations avoiding joins in order to improve performance.</li>
+                            </ul>
+                            </p>
+
+                            <img class="center" src="/media/twitter-movies/dashboard.png">
+
+                            <p>The prototype also had some limitations:</p>
+
+                            <img class="center" src="/media/twitter-movies/dashboard.png">
+
                             <p><a href="https://github.com/ravneetg/twitter" target="_blank">GitHub code</a></p>
                         </div>
                     </div>
