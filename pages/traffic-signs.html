@@ -51,6 +51,8 @@
                             
                             <p>This is an overview of the second project of the Udacity nanodegreee. In this project, we use a neural network implemented in Tensorflow to recognize traffic signs, based on a database from German. <br />
                             
+                            <p><b>Data exploration</b></p>
+                            
                             <p> The data is comprised of:
                             <ul>
                                 <li>34799 training samples, 4410 validation samples, 12630 test samples</li>
@@ -70,7 +72,8 @@
                             <img class="center" src="/media/traffic-signs/barchart.png">
                             </br>
                             
-                            <p><b>Preprocessing</b> We performed 3 processing steps:
+                            <p><b>Preprocessing</b></p>
+                            <p>We performed 3 processing steps:
                             <ul>
                             <li>Augmenting the data via tilting to correct the imbalance observed higher </li>
                             <li>Perform histogram equalization to correct for contrast/luminosity variation observed in the samples</li>
@@ -81,9 +84,9 @@
                             <img class="center" src="/media/traffic-signs/vignette.png" width="80%">
                             <img class="center" src="/media/traffic-signs/barchart2.png">
                             
-                            <p>The data consists of 7049 images of 96 by 96 pixels. There are 15 facial keypoints to identify, each with 2 coordinates. The dataset is only fully labelled for ~2225 images, with the others only containing 4 features (2 eye centers, nose tip, mouth center bottom lip)</p>
+                            <p><b>Neural network architecture</b></p>
                             
-                            <p> We developed a series of net which reached the top 10% of the competition:</p>
+                            <p><b>Training</b></p>
                             
                             <table>
                                 <tr>
@@ -98,33 +101,7 @@
                                 </tr>
                             </table>
                             <br />
-                            <p> We started with a simple neural network with 2 convolution layers and a dense layer represented below</p>
-
-                            <img class="center" src="/media/facial-detection/cnn0.png">
-                            <br />
-
-                            <p> The network quickly overfitted, which led us to use the following methods:
-                            <ul>
-                                <li><b>Data augmentation:</b> we randomly flipped 50% of the images horizontally between epochs, which had the advantage of not increasing training time</li>
-                                <li><b>Pooling layers:</b> we used max pooling to reduce the nb of parameters</li>
-                                <li><b>Dropout:</b> we used dropout to build some redundancy in the network</li>
-                            </ul>
-                            </p>
-
-                            <img class="center" src="/media/facial-detection/cnn2.png">
-                            <br />
-                            <p> Given the reduction in the nb of parameters, we focused later improvements on
-                            <ul>
-                                <li>increasing the depth of the network</li>
-                                <li>fine tuning the training parameters</li>
-                                <li>introducing the notion of specialist networks</li>
-                            </ul>
-                             The idea of the latter point is to use the cnn trained on all features, and keep training it but on a subset of features, to notably take advantage of all 7000 images, and not only the 2200 fully labelled ones.
-                            </p>
-
-                            <img class="center" src="/media/facial-detection/cnn5-7.png">
-                            <br />
-                            <img class="center" src="/media/facial-detection/training.png">
+                            
                             
                             <br />
                             <p><a href="https://github.com/gderoo/self_driving_car/blob/master/Project%202%20-%20Traffic%20Sign%20Classifier/Traffic_Sign_Classifier.ipynb" target="_blank">GitHub repository</a></p>
