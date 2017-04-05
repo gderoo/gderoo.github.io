@@ -76,7 +76,7 @@
                             <p><b>Preprocessing</b></p>
                             <p>We performed 3 processing steps:
                             <ul>
-                            <li>Augmenting the data via tilting to correct the imbalance observed higher </li>
+                            <li>Augmenting the data via tilting to correct the imbalance observed higher, and limit overfitting</li>
                             <li>Perform <a href="https://en.wikipedia.org/wiki/Histogram_equalization" target="_blank">histogram equalization</a> to correct for contrast/luminosity variation observed in the samples</li>
                             <li>Normalize the data to improve the convergence of the gradient descent (e.g. apply (x-128)/256 )</li>
                             </ul>
@@ -87,18 +87,18 @@
                             
                             <p><b>Neural network architecture</b></p>
                             
-                            <p>For the architecture, we started with the <a href="http://yann.lecun.com/exdb/lenet/" target="_blank">LeNet architecture</a> used for mnist, which you can see below</p>
+                            <p>For the architecture, we used the <a href="http://yann.lecun.com/exdb/lenet/" target="_blank">LeNet architecture</a> used for mnist as a starting (see below).</p>
+
+                            <p>We performed a series of modification to adapt to our problem:
+                            <ul>
+                                <li>We adapted it to our input/output dimensions, i.e. (32,32,3) for input and 43 for output</li>
+                                <li>To reach the target of 0.93, we also need to increase model complexity. For that, we use the learnings from the <a href="/pages/facial-detection.html">facial keypoint detection</a> exercise. We double the number of convolutions before pooling, i.e. 2 convolutions in a row instead of 1.</li>
+                                <li>We also introduced dropout to limit potential overfitting for this architecture</li>
+                            </ul>
+                            </p>
                             
                             <img class="center" src="/media/traffic-signs/lenet.png">
                             </br>
-                            
-                            <p>However we performed a series of changes:
-                            <ul>
-                                <li>We adapted it to our input/output dimensions, i.e. (32,32,3) for input and 43 for output</li>
-                                <li>Thanks to the learning from the <a href="/pages/facial-detection.html">facial keypoint detection</a> exercise, we use a VGG, i.e. 2 convolutions in a row before each pooling instead of 1.</li>
-                                <li>We also introduced dropout to limit potential overfitting</li>
-                            </ul>
-                            </p>
                             
                             <p><b>Training</b></p>
                             
@@ -111,9 +111,9 @@
                                     <th>Test</th>
                                 </tr>
                                 <tr>
-                                    <td>0.988</td>
-                                    <td>0.966</td>
-                                    <td>0.933</td>
+                                    <td>0.988   </td>
+                                    <td>0.966   </td>
+                                    <td>0.933   </td>
                                 </tr>
                             </table>
                             <br />
