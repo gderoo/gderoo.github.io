@@ -102,13 +102,23 @@
                             
                             <p><b>Training</b></p>
                             
-                            <p>With a batch size of 128 and an augmented training set of 56337 samples, it takes ~100s per EPOCH. So we create a stopping condition, such that the training stop when the validation error reaches 0.96. It does so in 42 EPOCHs
+                            <p>With a batch size of 128 and an augmented training set of 56337 samples, it takes ~100s per EPOCH. So we create a stopping condition, such that the training stop when the validation error reaches 0.96. </p>
+                            
+                            <p>Accuracies after 42 EPOCHs:
                             <ul>
                                 <li>Training: 0.988</li>
                                 <li>Validation: 0.966</li>
                                 <li>Test: 0.933</li>
                             </ul>
                             </p>
+                            
+                            <p><b>Further improvement</b></p>
+                            <p><ul>
+                                <li>We could have further tightened the hypterparameters and let the model run to achieve a higher accuracy</li>
+                                <li>Preprocessing could also include the inclusion of noise, or the introduction of deformation (e.g. some photographs are not taken purely perpendicularly)</li>
+                                <li>Test: 0.933</li>
+                            </ul></p>
+
                             
                             <img class="center" src="/media/traffic-signs/accuracy.png">
                                 </br>
