@@ -49,9 +49,21 @@
                         <br />
                         <div class="entry-content">
                             
-                            <p>This is an overview of the second project of the Udacity nanodegreee. In this project, we use a neural network implemented in Tensorflow to recognize traffic signs. <br />
+                            <p>This is an overview of the second project of the Udacity nanodegreee. In this project, we use a neural network implemented in Tensorflow to recognize traffic signs, based on a database from German. <br />
                             
-                            <p>As part of a Berkeley class on Machine Learning, we entered a Kaggle tutorial competition on <a href="https://www.kaggle.com/c/facial-keypoints-detection">Facial Keypoints detection</a>. The objective is to predict keypoint positions on face images, which can be used in tracking faces in videos, analysing facial expressions, biometrics, etc.</p>
+                            <p> The data is comprised of:
+                            <ul>
+                                <li>34799 training samples, 4410 validation samples, 12630 test samples</li>
+                                <li>each traffic sign image has a shape of (32, 32, 3)</li>
+                                <li>all images are labelled based on 43 classes</li>
+                            </ul>
+                            </p>
+                            
+                            <img class="center" src="/media/traffic-signs/barchart.png">
+                            </br>
+                            
+                            <p>We see that the data is very imbalanced it varies for 200 to 2000. If we estimate that this is biases compared to reality, we could consider loss functions that give the same weight to each class (vs. each sample)
+                            </p>
                             
                             <p>The data consists of 7049 images of 96 by 96 pixels. There are 15 facial keypoints to identify, each with 2 coordinates. The dataset is only fully labelled for ~2225 images, with the others only containing 4 features (2 eye centers, nose tip, mouth center bottom lip)</p>
                             
@@ -59,35 +71,14 @@
                             
                             <table>
                                 <tr>
-                                    <th>Net name</th>
-                                    <th>Nb layers</th>
-                                    <th>Nb parameters</th>
                                     <th>Training</th>
-                                    <th>Kaggle RMSE</th>
+                                    <th>Validation</th>
+                                    <th>Test</th>
                                 </tr>
                                 <tr>
-                                    <td colspan="5"><hr/></td>
-                                </tr>
-                                <tr>
-                                    <td>cnn0</td>
-                                    <td>3</td>
-                                    <td>55,365,306</td>
-                                    <td>1,000ep x 1.42s</td>
-                                    <td>3.55 (71st)</td>
-                                </tr>
-                                <tr>
-                                    <td>cnn6</td>
-                                    <td>8</td>
-                                    <td>13,964,862</td>
-                                    <td>10,000ep x 5.56s</td>
-                                    <td>2.85 (39th)</td>
-                                </tr>
-                                <tr>
-                                    <td>cnn6 with specialists <br />(4 main features)</td>
-                                    <td>8</td>
-                                    <td>13,964,862</td>
-                                    <td>extra <br /> 500-1,000ep x 18.38s</td>
-                                    <td>2.17 (18th)</td>
+                                    <td>0.988</td>
+                                    <td>0.966</td>
+                                    <td>0.933</td>
                                 </tr>
                             </table>
                             <br />
