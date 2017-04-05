@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    <head>
+        <title>gderoo</title>
+        <meta charset="utf-8" />
+        <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+            
+        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/beemuse.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
+    </head>
+    
+    <body>
+        
+        <section id="navbar">
+            <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/index.html">gderoo</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/pages/menu.html">Home</a></li>
+                            <li><a href="/pages/about-me.html">About Me</a></li>
+                            <li><a href="/pages/cv.html">CV</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </section>
+        
+        <br>
+        <section class="content">
+            <div class="row">
+                
+                <div class="col-xs-12 col-md-8  col-md-offset-2 col-lg-6 col-lg-offset-3">
+                    
+                    <div class="paper">
+                        <header>
+                            <h2 class="entry-title">Facial Keypoints Detection</h2>
+                            
+                        </header>
+                        <footer class="post-info">
+                            <b>December 2016</b>
+                        </footer><!-- /.post-info -->
+                        <br />
+                        <div class="entry-content">
+                            
+                            <p>As part of a Berkeley class on Machine Learning, we entered a Kaggle tutorial competition on <a href="https://www.kaggle.com/c/facial-keypoints-detection">Facial Keypoints detection</a>. The objective is to predict keypoint positions on face images, which can be used in tracking faces in videos, analysing facial expressions, biometrics, etc.</p>
+                            
+                            <p>The data consists of 7049 images of 96 by 96 pixels. There are 15 facial keypoints to identify, each with 2 coordinates. The dataset is only fully labelled for ~2225 images, with the others only containing 4 features (2 eye centers, nose tip, mouth center bottom lip)</p>
+                            
+                            <p> We developed a series of net which reached the top 10% of the competition:</p>
+                            
+                            <table>
+                                <tr>
+                                    <th>Net name</th>
+                                    <th>Nb layers</th>
+                                    <th>Nb parameters</th>
+                                    <th>Training</th>
+                                    <th>Kaggle RMSE</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="5"><hr/></td>
+                                </tr>
+                                <tr>
+                                    <td>cnn0</td>
+                                    <td>3</td>
+                                    <td>55,365,306</td>
+                                    <td>1,000ep x 1.42s</td>
+                                    <td>3.55 (71st)</td>
+                                </tr>
+                                <tr>
+                                    <td>cnn6</td>
+                                    <td>8</td>
+                                    <td>13,964,862</td>
+                                    <td>10,000ep x 5.56s</td>
+                                    <td>2.85 (39th)</td>
+                                </tr>
+                                <tr>
+                                    <td>cnn6 with specialists <br />(4 main features)</td>
+                                    <td>8</td>
+                                    <td>13,964,862</td>
+                                    <td>extra <br /> 500-1,000ep x 18.38s</td>
+                                    <td>2.17 (18th)</td>
+                                </tr>
+                            </table>
+                            <br />
+                            <p> We started with a simple neural network with 2 convolution layers and a dense layer represented below</p>
+
+                            <img class="center" src="/media/facial-detection/cnn0.png">
+                            <br />
+
+                            <p> The network quickly overfitted, which led us to use the following methods:
+                            <ul>
+                                <li><b>Data augmentation:</b> we randomly flipped 50% of the images horizontally between epochs, which had the advantage of not increasing training time</li>
+                                <li><b>Pooling layers:</b> we used max pooling to reduce the nb of parameters</li>
+                                <li><b>Dropout:</b> we used dropout to build some redundancy in the network</li>
+                            </ul>
+                            </p>
+
+                            <img class="center" src="/media/facial-detection/cnn2.png">
+                            <br />
+                            <p> Given the reduction in the nb of parameters, we focused later improvements on
+                            <ul>
+                                <li>increasing the depth of the network</li>
+                                <li>fine tuning the training parameters</li>
+                                <li>introducing the notion of specialist networks</li>
+                            </ul>
+                             The idea of the latter point is to use the cnn trained on all features, and keep training it but on a subset of features, to notably take advantage of all 7000 images, and not only the 2200 fully labelled ones.
+                            </p>
+
+                            <img class="center" src="/media/facial-detection/cnn5-7.png">
+                            <br />
+                            <img class="center" src="/media/facial-detection/training.png">
+                            
+                            <br />
+                            <p><a href="https://github.com/gderoo/gderoo.github.io/blob/master/media/facial-detection/notebook.ipynb" target="_blank">GitHub repository</a></p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </section><!-- /#content -->
+        
+        <footer id="slidingfooter" class="body">
+            Original design by Andy Reagan, modified by Guillaume De Roo
+        </footer>
+    </body>
+    </script>
+</html>
