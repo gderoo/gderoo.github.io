@@ -64,11 +64,22 @@
                             <img class="center" src="/media/traffic-signs/sign_examples.png">
                             </br>
                             
-                            <p>We see that the data is very imbalanced it varies for 200 to 2000. If we estimate that this is biases compared to reality, we could consider loss functions that give the same weight to each class (vs. each sample)
+                            <p>We can also see that the data is very imbalanced, with 200 to 2000 samples by class. If this is biased compared to reality, we could either correct the loss function, or augment the dataset.
                             </p>
                             
                             <img class="center" src="/media/traffic-signs/barchart.png">
                             </br>
+                            
+                            <p><b>Preprocessing</b> We performed 3 processing steps:
+                            <ul>
+                            <li>Augmenting the data via tilting to correct the imbalance observed higher </li>
+                            <li>Perform histogram equalization to correct for contrast/luminosity variation observed in the samples</li>
+                            <li>Normalize the data to improve the convergence of the gradient descent (e.g. apply (x-128)/256 )</li>
+                            </ul>
+                            </p>
+                            
+                            <img class="center" src="/media/traffic-signs/vignette.png">
+                            <img class="center" src="/media/traffic-signs/barchart2.png">
                             
                             <p>The data consists of 7049 images of 96 by 96 pixels. There are 15 facial keypoints to identify, each with 2 coordinates. The dataset is only fully labelled for ~2225 images, with the others only containing 4 features (2 eye centers, nose tip, mouth center bottom lip)</p>
                             
