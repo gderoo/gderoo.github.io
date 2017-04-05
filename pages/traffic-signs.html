@@ -51,6 +51,7 @@
                             
                             <p>This is an overview of the second project of the Udacity nanodegreee. In this project, we use a neural network implemented in Tensorflow to recognize traffic signs, based on a database from German. <br />
                             
+                            <br />
                             <p><b>Data exploration</b></p>
                             
                             <p> The data is comprised of:
@@ -63,7 +64,7 @@
                             
                             <p> Here are examples of each class. Beyond the classes we can see difference in contrast / quality.
                             </p>
-                            <img class="center" src="/media/traffic-signs/sign_examples.png">
+                            <img class="center" src="/media/traffic-signs/sign_examples_short.png">
                             </br>
                             
                             <p>We can also see that the data is very imbalanced, with 200 to 2000 samples by class. If this is biased compared to reality, we could either correct the loss function, or augment the dataset.
@@ -76,17 +77,32 @@
                             <p>We performed 3 processing steps:
                             <ul>
                             <li>Augmenting the data via tilting to correct the imbalance observed higher </li>
-                            <li>Perform histogram equalization to correct for contrast/luminosity variation observed in the samples</li>
+                            <li>Perform <a href="https://en.wikipedia.org/wiki/Histogram_equalization" target="_blank">histogram equalization</a> to correct for contrast/luminosity variation observed in the samples</li>
                             <li>Normalize the data to improve the convergence of the gradient descent (e.g. apply (x-128)/256 )</li>
                             </ul>
                             </p>
                             
-                            <img class="center" src="/media/traffic-signs/vignette.png" width="80%">
+                            <img class="center" src="/media/traffic-signs/vignette.png" width="60%">
                             <img class="center" src="/media/traffic-signs/barchart2.png">
                             
                             <p><b>Neural network architecture</b></p>
                             
+                            <p>For the architecture, we started with the <a href="http://yann.lecun.com/exdb/lenet/" target="_blank">LeNet architecture</a> used for mnist, which you can see below</p>
+                            
+                            <img class="center" src="/media/traffic-signs/lenet.png">
+                            </br>
+                            
+                            <p>However we performed a series of changes:
+                            <ul>
+                                <li>We adapted it to our input/output dimensions, i.e. (32,32,3) for input and 43 for output</li>
+                                <li>Thanks to the learning from the <a href="/pages/facial-detection.html">facial keypoint detection</a> exercise, we use a VGG, i.e. 2 convolutions in a row before each pooling instead of 1.</li>
+                                <li>We also introduced dropout to limit potential overfitting</li>
+                            </ul>
+                            </p>
+                            
                             <p><b>Training</b></p>
+                            
+                            <p>With a batch size of 128 and an augmented training set of 56337 samples, it takes ~100s per EPOCH. So we create a stopping condition, such that the training stop when the validation error reaches 0.96. It does so in 42 EPOCHs</p>
                             
                             <table>
                                 <tr>
@@ -102,6 +118,8 @@
                             </table>
                             <br />
                             
+                            <img class="center" src="/media/traffic-signs/accuracy.png">
+                                </br>
                             
                             <br />
                             <p><a href="https://github.com/gderoo/self_driving_car/blob/master/Project%202%20-%20Traffic%20Sign%20Classifier/Traffic_Sign_Classifier.ipynb" target="_blank">GitHub repository</a></p>
