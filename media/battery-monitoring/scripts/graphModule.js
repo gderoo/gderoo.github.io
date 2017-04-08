@@ -243,6 +243,6 @@ var AgIGraph = (function () {
 
 })();
 now=new Date();
-//AgIData.init("http://test1.gvirtsman.com:8086/query?db=w251&q=","roy","Kaftor");
+//AgIData.init("https://test1.gvirtsman.com:8086/query?db=w251&q=","roy","Kaftor");
 AgIGraph.init('A Gross GN MW','Real charge capability',AgIData.parseDate('2016-08-01T00:00:00Z'),now);
 

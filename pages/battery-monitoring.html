@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    <head>
+        <title>gderoo</title>
+        <meta charset="utf-8" />
+        <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+            
+        <link rel="stylesheet" type="text/css" href="/theme/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/beemuse.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/base.css">
+    </head>
+    
+    <body>
+        
+        <section id="navbar">
+            <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/index.html">gderoo</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/pages/menu.html">Home</a></li>
+                            <li><a href="/pages/about-me.html">About Me</a></li>
+                            <li><a href="/pages/cv.html">CV</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </section>
+        
+        <br>
+        <section class="content">
+            <div class="row">
+                
+                <div class="col-xs-12 col-md-8  col-md-offset-2 col-lg-6 col-lg-offset-3">
+                    
+                    <div class="paper">
+                        <header>
+                            <h2 class="entry-title">Traffic Sign Classifier</h2>
+                            
+                        </header>
+                        <footer class="post-info">
+                            <b>December 2016</b>
+                        </footer><!-- /.post-info -->
+                        <br />
+                        <div class="entry-content">
+                            
+                            <p>This is an overview of the second project of the Udacity nanodegreee. In this project, we use a neural network implemented in Tensorflow to recognize traffic signs, based on a database from Germany. <br />
+                            
+                            <br />
+                            <p><b>Data exploration</b></p>
+                            
+                            <p> The data is comprised of:
+                            <ul>
+                                <li>34799 training samples, 4410 validation samples, 12630 test samples</li>
+                                <li>each traffic sign image has a shape of (32, 32, 3)</li>
+                                <li>all images are labelled based on 43 classes</li>
+                            </ul>
+                            </p>
+                            
+                            <p> Here are random examples of the first classes. Beyond the variation is classes, we can already see difference in contrast / quality.
+                            </p>
+                            <img class="center" src="/media/traffic-signs/sign_examples_short.png">
+                            </br>
+                            
+                            <p>We notice that the data is very unbalanced, with 200 to 2000 samples by class. If this is biased compared to reality, we may want to correct, either by correcting the loss function to give equal weight to the different classes, or by augmenting the dataset.
+                            </p>
+                            
+                            <img class="center" src="/media/traffic-signs/barchart.png">
+                            </br>
+                            
+                            <p><b>Preprocessing</b></p>
+                            <p>We performed 3 processing steps:
+                            <ul>
+                            <li>Augmenting the data via tilting to correct the imbalance observed higher, and limit overfitting</li>
+                            <li>Perform <a href="https://en.wikipedia.org/wiki/Histogram_equalization" target="_blank">histogram equalization</a> to correct for contrast/luminosity variation observed in the samples</li>
+                            <li>Normalize the data to improve the convergence of the gradient descent (e.g. apply (x-128)/256 )</li>
+                            </ul>
+                            </p>
+                            
+                            <img class="center" src="/media/traffic-signs/vignette.png" width="60%">
+                            <img class="center" src="/media/traffic-signs/barchart2.png">
+                            
+                            <p><b>Neural network architecture</b></p>
+                            
+                            <p>For the architecture, we used the <a href="http://yann.lecun.com/exdb/lenet/" target="_blank">LeNet architecture</a> used for mnist as a starting (see below).</p>
+
+                            <p>We performed a series of modification to adapt to our problem:
+                            <ul>
+                                <li>We adapted it to our input/output dimensions, i.e. (32,32,3) for input and 43 for output</li>
+                                <li>To reach the target of 0.93, we also need to increase model complexity. For that, we use the learnings from the <a href="/pages/facial-detection.html">facial keypoint detection</a> exercise. We double the number of convolutions before pooling, i.e. 2 convolutions in a row instead of 1.</li>
+                                <li>We also introduced dropout to limit potential overfitting for this architecture</li>
+                            </ul>
+                            </p>
+                            
+                            <img class="center" src="/media/traffic-signs/lenet.png">
+                            </br>
+                            
+                            <p><b>Training</b></p>
+                            
+                            <p>With a batch size of 128 and an augmented training set of 56337 samples, it takes ~100s per EPOCH. So we create a stopping condition, such that the training stop when the validation error reaches 0.96. </p>
+                            
+                            <p>Accuracies after 42 EPOCHs:
+                            <ul>
+                                <li>Training: 0.988</li>
+                                <li>Validation: 0.966</li>
+                                <li>Test: 0.933</li>
+                            </ul>
+                            </p>
+                            
+                            <img class="center" src="/media/traffic-signs/accuracy.png">
+                                </br>
+                            
+                            <p><b>Further improvement</b></p>
+                            <p><ul>
+                                <li>We could have further tightened the hyperparameters and let the model run to achieve a higher accuracy</li>
+                                <li>Preprocessing could also include noise, or the introduction of deformation (e.g. some photographs are not taken purely perpendicularly)</li>
+                                <li>In its current implementation, histogram equalization for RGB images may also be distorting the color balance, so adding images with different brightness may achieve better results</li>
+                            </ul></p>
+                            
+                            <br />
+                            <p><a href="https://github.com/gderoo/self_driving_car/blob/master/Project%202%20-%20Traffic%20Sign%20Classifier/Traffic_Sign_Classifier.ipynb" target="_blank">GitHub repository</a></p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </section><!-- /#content -->
+        
+        <footer id="slidingfooter" class="body">
+            Original design by Andy Reagan, modified by Guillaume De Roo
+        </footer>
+    </body>
+    </script>
+</html>
