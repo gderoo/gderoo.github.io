@@ -56,7 +56,13 @@
                             <li> Test that the model successfully drives around track without leaving the road </li>
                             </ul>
                             
-                            <p><b>Data exploration</b></p>
+                            <video class="center" width="320" height="240" controls autoplay>
+                                <source src="/media/behavioral-cloning/video.mp4" type="video/mp4">
+                                    <source src="movie.ogg" type="video/ogg">
+                                        Your browser does not support the video tag.
+                                        </video> <br />
+                            
+                            <p><b>Data acquisition</b></p>
                             
                             <p>Udacity has created a simulation environment in which we can drive a car. When driving, the simulator captures the driving parameters (most notably the steering angle), together with what the driver sees (front, left and right camera).</p>
                             
@@ -96,7 +102,10 @@
                             
                             <p><b>Neural network architecture</b></p>
                             
-                            <p>For the architecture, we used the <a href="http://yann.lecun.com/exdb/lenet/" target="_blank">LeNet architecture</a> used for mnist as a starting (see below).</p>
+                            <p>For the architecture, we mostly used the architecture from <a href="https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf" target="_blank">NVIDIA</a> shown below.</p>
+                            
+                            <img class="center" src="/media/behavioral-cloning/nvidia-architecture.png">
+                            </br>
 
                             <p>We performed a series of modification to adapt to our problem:
                             <ul>
