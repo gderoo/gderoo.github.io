@@ -40,27 +40,36 @@
                     
                     <div class="paper">
                         <header>
-                            <h2 class="entry-title">Traffic Sign Classifier</h2>
+                            <h2 class="entry-title">Behavioral Cloning</h2>
                             
                         </header>
                         <footer class="post-info">
-                            <b>March 2017</b>
+                            <b>April 2017</b>
                         </footer><!-- /.post-info -->
                         <br />
                         <div class="entry-content">
                             
-                            <p>This is an overview of the second project of the Udacity nanodegreee. In this project, we use a neural network implemented in Tensorflow to recognize traffic signs, based on a database from Germany. <br />
+                            <p>This is an overview of the third project of the Udacity nanodegreee. In this project, we
+                            <ul>
+                            <li> Use a video game simulator to collect data of good driving behavior </li>
+                            <li> Build and train a convolution neural network in Keras that predicts steering angles from images </li>
+                            <li> Test that the model successfully drives around track without leaving the road </li>
+                            </ul>
                             
                             <br />
                             <p><b>Data exploration</b></p>
                             
-                            <p> The data is comprised of:
-                            <ul>
-                                <li>34799 training samples, 4410 validation samples, 12630 test samples</li>
-                                <li>each traffic sign image has a shape of (32, 32, 3)</li>
-                                <li>all images are labelled based on 43 classes</li>
-                            </ul>
-                            </p>
+                            <p>Udacity has created a simulation environment in which we can drive a car. When driving, the simulator captures the driving parameters (most notably the steering angle), together with what the driver sees (front, left and right camera).</p>
+                            
+                            <img class="center" src="/media/behavioral-cloning/parameters.png">
+                            <img class="center" src="/media/behavioral-cloning/leftcenterright.png">
+                            
+                            <p> After an attempt at creating manual datasets, we noticed that the results were usually jerky without a joystick. In the end, we used the dataset provided <a href="https://d17h27t6h515a5.cloudfront.net/topher/2016/December/584f6edd_data/data.zip"> here</a>, which contained 8036 examples, and 3 times more images. </p>
+                            
+                            <p>We can notice however that even if we use the side cameras, and put an angle of +/-0.2 for those. We end up with about 4.5k images at 0, 0.2 and -0.2 degree respectively.
+                            
+                            <img class="center" src="/media/behavioral-cloning/histo_before.png">
+
                             
                             <p> Here are random examples of the first classes. Beyond the variation is classes, we can already see difference in contrast / quality.
                             </p>
