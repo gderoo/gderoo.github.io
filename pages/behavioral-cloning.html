@@ -56,32 +56,21 @@
                             <li> Test that the model successfully drives around track without leaving the road </li>
                             </ul>
                             
-                            <br />
                             <p><b>Data exploration</b></p>
                             
                             <p>Udacity has created a simulation environment in which we can drive a car. When driving, the simulator captures the driving parameters (most notably the steering angle), together with what the driver sees (front, left and right camera).</p>
                             
                             <img class="center" src="/media/behavioral-cloning/parameters.png">
                             <img class="center" src="/media/behavioral-cloning/leftcenterright.png">
+                            </br>
                             
                             <p> After an attempt at creating manual datasets, we noticed that the results were usually jerky without a joystick. In the end, we used the dataset provided <a href="https://d17h27t6h515a5.cloudfront.net/topher/2016/December/584f6edd_data/data.zip"> here</a>, which contained 8036 examples, and 3 times more images. </p>
                             
-                            <p>We can notice however that even if we use the side cameras, and put an angle of +/-0.2 for those. We end up with about 4.5k images at 0, 0.2 and -0.2 degree respectively.
+                            <p>In this dataset, we can use the side cameras to provide additional samples, by adding an angle of +/-0.2. Even so, we end up with about 4.5k images at 0, 0.2 and -0.2 degree respectively.
                             
                             <img class="center" src="/media/behavioral-cloning/histo_before.png">
+                            </br>
 
-                            
-                            <p> Here are random examples of the first classes. Beyond the variation is classes, we can already see difference in contrast / quality.
-                            </p>
-                            <img class="center" src="/media/traffic-signs/sign_examples_short.png">
-                            </br>
-                            
-                            <p>We notice that the data is very unbalanced, with 200 to 2000 samples by class. If this is biased compared to reality, we may want to correct, either by correcting the loss function to give equal weight to the different classes, or by augmenting the dataset.
-                            </p>
-                            
-                            <img class="center" src="/media/traffic-signs/barchart.png">
-                            </br>
-                            
                             <p><b>Preprocessing</b></p>
                             <p>We performed 3 processing steps:
                             <ul>
