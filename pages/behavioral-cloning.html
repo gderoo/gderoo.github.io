@@ -72,16 +72,27 @@
                             </br>
 
                             <p><b>Preprocessing</b></p>
-                            <p>We performed 3 processing steps:
+                            
+                            <p>To augment the data set, we did a series of operations:
                             <ul>
-                            <li>Augmenting the data via tilting to correct the imbalance observed higher, and limit overfitting</li>
-                            <li>Perform <a href="https://en.wikipedia.org/wiki/Histogram_equalization" target="_blank">histogram equalization</a> to correct for contrast/luminosity variation observed in the samples</li>
-                            <li>Normalize the data to improve the convergence of the gradient descent (e.g. apply (x-128)/256 )</li>
+                            <li> random shuffle of the dataset</li>
+                            <li> flipping the image horizontally in 50% of cases</li>
+                            <li> random change the brightness by a factor of 0.5 to 1.2</li>
+                            <li> random lateral shift by +/-50px, while correcting the angle</li>
+                            <li> random shearing of the image to simulate a modification of the angle of the road.</li>
                             </ul>
+                            This last transformation allows us to use even the images with an angle of 0 without overfitting for that angle, and is one of the most impactful.
                             </p>
                             
-                            <img class="center" src="/media/traffic-signs/vignette.png" width="60%">
-                            <img class="center" src="/media/traffic-signs/barchart2.png">
+                            <p>Below are random examples, starting from the original in top left corner:</p>
+                            
+                            <img class="center" src="/media/behavioral-cloning/augmentation.png">
+                            </br>
+                               
+                            The resulting distribution of angles is much smoother
+                            
+                            <img class="center" src="/media/behavioral-cloning/histo_after.png">
+                            </br>
                             
                             <p><b>Neural network architecture</b></p>
                             
