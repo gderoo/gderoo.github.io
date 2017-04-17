@@ -102,36 +102,21 @@
                             
                             <p><b>Neural network architecture</b></p>
                             
-                            <p>For the architecture, we mostly used the architecture from <a href="https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf" target="_blank">NVIDIA</a> shown below.</p>
+                            <p>For the architecture, we mostly used the architecture from a <a href="https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf" target="_blank">NVIDIA paper</a> shown below. The main modifications were to:
+                            <ul>
+                                <li>introduce a drop out at the end of the convolutional layers</li>
+                                <li>add cropping of the top and bottom of the image (car hood) before normalization</li>
+                            </ul>
+                            </p>
                             
                             <a href="https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf" target="_blank"><img class="center" src="/media/behavioral-cloning/nvidia-architecture.png" height="300"></a>
                             </br>
 
-                            <p>We performed a series of modification to adapt to our problem:
-                            <ul>
-                                <li>We adapted it to our input/output dimensions, i.e. (32,32,3) for input and 43 for output</li>
-                                <li>To reach the target of 0.93, we also need to increase model complexity. For that, we use the learnings from the <a href="/pages/facial-detection.html">facial keypoint detection</a> exercise. We double the number of convolutions before pooling, i.e. 2 convolutions in a row instead of 1.</li>
-                                <li>We also introduced dropout to limit potential overfitting for this architecture</li>
-                            </ul>
-                            </p>
-                            
-                            <img class="center" src="/media/traffic-signs/lenet.png">
-                            </br>
+                            <p>Orginally, we had used a simpler neural network with less parameters to limit overfitting. However, after the data augmentation strategy implemented above, we were able to directly implement the NVIDIA architecture which was developed to solve a similar issue.</p>
                             
                             <p><b>Training</b></p>
                             
-                            <p>With a batch size of 128 and an augmented training set of 56337 samples, it takes ~100s per EPOCH. So we create a stopping condition, such that the training stop when the validation error reaches 0.96. </p>
-                            
-                            <p>Accuracies after 42 EPOCHs:
-                            <ul>
-                                <li>Training: 0.988</li>
-                                <li>Validation: 0.966</li>
-                                <li>Test: 0.933</li>
-                            </ul>
-                            </p>
-                            
-                            <img class="center" src="/media/traffic-signs/accuracy.png">
-                                </br>
+                            <p>We used a batch size of 256, with 7 epochs and 8,192 images per epoch (i.e. 32 batches per epoch). We also implemented an image generator to optimize performance.</p>
                             
                             <p><b>Further improvement</b></p>
                             <p>We notice that the car mistakes shadows for road borders and tries to avoid them (only to steer back to the middle of the road when it arrives close to the edge). This could potentially overcome by casting random shadows during the data augmentation process.</p>
