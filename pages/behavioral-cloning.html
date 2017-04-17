@@ -53,7 +53,7 @@
                             <ul>
                             <li> Use a video game simulator to collect data of good driving behavior </li>
                             <li> Build and train a convolution neural network in Keras that predicts steering angles from images </li>
-                            <li> Test that the model successfully drives around track without leaving the road </li>
+                            <li> Test that the model successfully drives around track </li>
                             </ul>
                             
                             <video class="center" width="320" height="240" controls autoplay loop>
@@ -70,7 +70,7 @@
                             <img class="center" src="/media/behavioral-cloning/leftcenterright.png">
                             </br>
                             
-                            <p> After an attempt at creating manual datasets, we noticed that the results were usually jerky without a joystick. In the end, we used the dataset provided <a href="https://d17h27t6h515a5.cloudfront.net/topher/2016/December/584f6edd_data/data.zip"> here</a>, which contained 8036 examples, and 3 times more images. </p>
+                            <p> After an attempt at creating manual datasets, we noticed that the results were usually jerky without a joystick. In the end, we used the dataset provided by Udacity <a href="https://d17h27t6h515a5.cloudfront.net/topher/2016/December/584f6edd_data/data.zip"> here</a>, which contained 8036 examples, and 3 times more images. </p>
                             
                             <p>In this dataset, we can use the side cameras to provide additional samples, by adding an angle of +/-0.2. Even so, we end up with about 4.5k images at 0, 0.2 and -0.2 degree respectively.
                             
@@ -119,7 +119,7 @@
                             <p>We used a batch size of 256, with 7 epochs and 8,192 images per epoch (i.e. 32 batches per epoch). We also implemented an image generator to optimize performance.</p>
                             
                             <p><b>Further improvement</b></p>
-                            <p>We notice that the car mistakes shadows for road borders and tries to avoid them (only to steer back to the middle of the road when it arrives close to the edge). This could potentially overcome by casting random shadows during the data augmentation process.</p>
+                            <p>We notice that the car mistakes shadows for road borders and tries to avoid them (only to steer back to the middle of the road when it arrives close to the edge). This could probably be overcome by casting random shadows on the image during the data augmentation process.</p>
                             
                             <p>Below an example in which the shadow steers the car to the right of the road:</p>
                             <img class="center" src="/media/behavioral-cloning/shadow.png">
