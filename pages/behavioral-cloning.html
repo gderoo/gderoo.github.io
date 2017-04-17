@@ -134,14 +134,13 @@
                                 </br>
                             
                             <p><b>Further improvement</b></p>
-                            <p><ul>
-                                <li>We could have further tightened the hyperparameters and let the model run to achieve a higher accuracy</li>
-                                <li>Preprocessing could also include noise, or the introduction of deformation (e.g. some photographs are not taken purely perpendicularly)</li>
-                                <li>In its current implementation, histogram equalization for RGB images may also be distorting the color balance, so adding images with different brightness may achieve better results</li>
-                            </ul></p>
+                            <p>We notice that the car mistakes shadows for road borders and tries to avoid them (only to steer back to the middle of the road when it arrives close to the edge). This could potentially overcome by casting random shadows during the data augmentation process.</p>
+                            
+                            <p>Below an example in which the shadow steers the car to the right of the road:</p>
+                            <img class="center" src="/media/behavioral-cloning/shadow.png">
                             
                             <br />
-                            <p><a href="https://github.com/gderoo/self_driving_car/blob/master/Project%202%20-%20Traffic%20Sign%20Classifier/Traffic_Sign_Classifier.ipynb" target="_blank">GitHub repository</a></p>
+                            <p><a href="https://github.com/gderoo/self_driving_car/tree/master/Project%203%20-%20Behavioral%20Cloning" target="_blank">GitHub repository</a></p>
 
 
                             </div>
