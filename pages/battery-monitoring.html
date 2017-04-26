@@ -79,7 +79,8 @@
                             <p><b><i>Notification Center:</i></b></br>
                             As notifications appear, we wanted to give remote operators a place with the backlog of notifications to address. We used a visualization common to users: a notification center similar to the MacOS interface. </br>
                             Operator can interact with notifications (Dismiss/Resolve/Escalate), and have associated editing tools (Undo/Redo/Share/Save). Since the focus was on visualization, we did only placed function placeholders.</br>
-                            We also intended to allow users to recall past notifications (not only current ones), hence the Live switch shown on the right.
+                            We also intended to allow users to recall past notifications (not only current ones), hence the Live switch shown on the right.</br>
+                            Last, we chose the use of a retractable sidebar to reduce the information density.
                             </p>
                             
                             <div style="display: table">
@@ -95,8 +96,10 @@
                             </br>
                             
                             <p><b><i>Graph:</i></b></br>
-                            To investigate notifications, and make a decision on the best action, operators want to drill down on the some metrics of the node at stake.</br>
-                            We put the table of metrics and the graph of the selected metrics side by side to keep the dashboard in one page. And enabled zoom and brush functionality so that the operator can get into the detailed without losing the context (shown in the smaller graph below).
+                            To make the best decision, operators may want to investigate the alarm by drilling down on the some metrics of the node at stake.</br>
+                            We enabled zoom and brush functionality so that the operator can get into the detailed without losing the context (shown in the smaller graph below).</br>
+                            It is worth noting that we separated 3 metrics, which we put in the top left corner (battery charge, power output, electricity price). We wanted to reflect the fact that they are key metrics by which operators always start. </br>
+                            Last, the 2x2 panel organization and the presence of metrics in 3 of them was chosen to keep all the information in one page
                             </p>
                             
                             <img class="center" src="/media/battery-monitoring/detailed-graph.gif">
