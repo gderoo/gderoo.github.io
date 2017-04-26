@@ -50,17 +50,33 @@
                         <div class="entry-content">
                             
                             <p>Below is the description a data visualization group project built as part of the Berkeley degree. </p>
-                            
-                            <p>The purpose was to create a visualization that helps monitor a battery power storage station. It presents a comprehensive view of current and historical alerts, as well all the relevant metrics that could have caused them. <br />
-                            The application is comprised of a D3, web based interface and a time series database backed back-end (influxDB). The data presented is obfuscated but real power generators data, taken with permission a SCADA system. </p>
-                            
-                            <p><a href="http://people.ischool.berkeley.edu/~gderoo/battery-monitoring/" target="_blank">Website</a> (database may be taken down)</p>
+                            <p>The purpose was to build a dashboard for remote operators of Battery Storage Power Stations, which are usually deployed as small, distributed and unmanned facilities.</p>
+                            <p>The visualization was developed using mostly D3 and a time series database backed back-end (influxDB). The data presented is obfuscated but real power generators data.</p>
                             
                             <img class="center" src="/media/battery-monitoring/vignette.png">
                             </br>
                             
-                            <p><b>Notification center:</b></br>
+                            <p><b>Below we highlight some functionalities</b></p>
                             
+                            <p><i>Search bar:</i></br>
+                            Given that an operator can have multiple sites to monitor, we wanted to give the user the ability to quickly be taken to a node if he knows its name
+                            </p>
+                            <img class="center" src="/media/battery-monitoring/search-bar.gif">
+                                </br>
+                            
+                            <p><i>Tree:</i></br>
+                            Since batteries are physically organized in a tree like fashion through electric connections, we wanted to keep this structure: if a battery is heating up, neighboring batteries may too, for instance.</br>
+                            We use elements that people may expect: ability to select, collapse, get summary statistics by hovering.</br>
+                            Here of course, the number of nodes is only a sample.
+                            </p>
+                            
+                            <img class="center" src="/media/battery-monitoring/tree.gif">
+                                </br>
+                            
+                            <p><i>Notification Center:</i></br>
+                            Remote operators have a backlog of notifications to address. We used a type of commonAs alarm are set to the anized in a tree like fashion through electric connections, we wanted to keep this structure: if a battery is heating up, neighboring batteries may too, for instance.</br>
+                            We use elements that people may expect: ability to select, collapse, get summary statistics by hovering.</br>
+                            Here of course, the number of nodes is only a sample.
                             </p>
                             
                             <div style="display: table">
@@ -75,44 +91,17 @@
                             </div>
                             </br>
                             
-                            Search bar
                             
-                            <img class="center" src="/media/battery-monitoring/search-bar.gif">
-                            </br>
                             
-                            Tree
-                            
-                            <img class="center" src="/media/battery-monitoring/tree.gif">
-                            </br>
+
                             
                             Graph
                             
                             <img class="center" src="/media/battery-monitoring/detailed-graph.gif">
                             </br>
                             
-                            <p><b>Training</b></p>
+                            <p><a href="http://people.ischool.berkeley.edu/~gderoo/battery-monitoring/" target="_blank">Website</a> (database may be taken down)</p>
                             
-                            <p>With a batch size of 128 and an augmented training set of 56337 samples, it takes ~100s per EPOCH. So we create a stopping condition, such that the training stop when the validation error reaches 0.96. </p>
-                            
-                            <p>Accuracies after 42 EPOCHs:
-                            <ul>
-                                <li>Training: 0.988</li>
-                                <li>Validation: 0.966</li>
-                                <li>Test: 0.933</li>
-                            </ul>
-                            </p>
-                            
-                            <img class="center" src="/media/traffic-signs/accuracy.png">
-                                </br>
-                            
-                            <p><b>Further improvement</b></p>
-                            <p><ul>
-                                <li>We could have further tightened the hyperparameters and let the model run to achieve a higher accuracy</li>
-                                <li>Preprocessing could also include noise, or the introduction of deformation (e.g. some photographs are not taken purely perpendicularly)</li>
-                                <li>In its current implementation, histogram equalization for RGB images may also be distorting the color balance, so adding images with different brightness may achieve better results</li>
-                            </ul></p>
-                            
-                            <br />
                             <p><a href="https://github.com/gderoo/gderoo.github.io/tree/master/media/battery-monitoring" target="_blank">GitHub repository</a></p>
                             
                             </div>
