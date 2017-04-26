@@ -68,8 +68,8 @@
                                 </br>
                             
                             <p><b><i>Tree:</i></b></br>
-                            Since batteries are physically organized in a tree like fashion through electric connections, we wanted to keep this structure: if a battery is heating up, neighboring batteries may too, for instance.</br>
-                            We use elements that people may expect: ability to select, collapse, get summary statistics by hovering.</br>
+                            Batteries are physically organized in a tree like fashion through electric connections, so we wanted to keep this structure: if a battery is heating up, neighboring batteries may too, for instance.</br>
+                            We enabled functionalities that people may expect in trees: ability to select, collapse, get summary statistics by hovering, etc.</br>
                             Here of course, the number of nodes is only a sample.
                             </p>
                             
@@ -77,9 +77,9 @@
                                 </br>
                             
                             <p><b><i>Notification Center:</i></b></br>
-                            Remote operators have a backlog of notifications to address. We used a type of common to users: a notification center of the same type as the MacOS interface. </br>
-                            Operator can mark notifications (Dismiss/Resove/Escalate), and have associated editing tools (Undo/Redo/Share/Save). Since the focus was on visualization, we did only placed function placeholders.</br>
-                            We also intended to allow users to recall past notifications (not only current ones), hence the Live switch.
+                            As notifications appear, we wanted to give remote operators a place with the backlog of notifications to address. We used a visualization common to users: a notification center similar to the MacOS interface. </br>
+                            Operator can interact with notifications (Dismiss/Resolve/Escalate), and have associated editing tools (Undo/Redo/Share/Save). Since the focus was on visualization, we did only placed function placeholders.</br>
+                            We also intended to allow users to recall past notifications (not only current ones), hence the Live switch shown on the right.
                             </p>
                             
                             <div style="display: table">
@@ -95,18 +95,17 @@
                             </br>
                             
                             <p><b><i>Graph:</i></b></br>
-                            Remote operators have a backlog of notifications to address. We used a type of common to users: a notification center of the same type as the MacOS interface. </br>
-                            Operator can mark notifications (Dismiss/Resove/Escalate), and have associated editing tools (Undo/Redo/Share/Save). Since the focus was on visualization, we did only placed function placeholders.</br>
-                            We also intended to allow users to recall past notifications (not only current ones), hence the Live switch.
+                            To investigate notifications, and make a decision on the best action, operators want to drill down on the some metrics of the node at stake.</br>
+                            We put the table of metrics and the graph of the selected metrics side by side to keep the dashboard in one page. And enabled zoom and brush functionality so that the operator can get into the detailed without losing the context (shown in the smaller graph below).
                             </p>
                             
                             <img class="center" src="/media/battery-monitoring/detailed-graph.gif">
                             </br>
                             
-                            <p><b>Further improvement</b></p>
-                            <p> During user test
+                            <p><b>Further improvements</b></p>
+                            <p> During user test exposed a series of limitations, I would highlight or add the following
                             <ul>
-                                <li>We could have further tightened the hyperparameters and let the model run to achieve a higher accuracy</li>
+                                <li>Metric graphs: User expressed that they would be We could have further tightened the hyperparameters and let the model run to achieve a higher accuracy</li>
                                 <li>Preprocessing could also include noise, or the introduction of deformation (e.g. some photographs are not taken purely perpendicularly)</li>
                                 <li>In its current implementation, histogram equalization for RGB images may also be distorting the color balance, so adding images with different brightness may achieve better results</li>
                             </ul></p>
