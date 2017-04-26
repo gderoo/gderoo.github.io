@@ -49,14 +49,17 @@
                         <br />
                         <div class="entry-content">
                             
-                            <p>Below is the description a data visualization group project built as part of the Berkeley degree. </p>
+                            <p>This is an overview of a group project done for the Berkeley class on Data Visualization. </p>
                             <p>The purpose was to build a dashboard for remote operators of Battery Storage Power Stations, which are usually deployed as small, distributed and unmanned facilities.</p>
                             <p>The visualization was developed using mostly D3 and a time series database backed back-end (influxDB). The data presented is obfuscated but real power generators data.</p>
+                            
+                            
+                            <p><a href="http://people.ischool.berkeley.edu/~gderoo/battery-monitoring/" target="_blank">Website</a> (database may be taken down)</p>
                             
                             <img class="center" src="/media/battery-monitoring/vignette.png">
                             </br>
                             
-                            <p><b>Below we highlight some functionalities</b></p>
+                            <p><b>Functionalities highlight</b></p>
                             
                             <p><i>Search bar:</i></br>
                             Given that an operator can have multiple sites to monitor, we wanted to give the user the ability to quickly be taken to a node if he knows its name
@@ -74,9 +77,9 @@
                                 </br>
                             
                             <p><i>Notification Center:</i></br>
-                            Remote operators have a backlog of notifications to address. We used a type of commonAs alarm are set to the anized in a tree like fashion through electric connections, we wanted to keep this structure: if a battery is heating up, neighboring batteries may too, for instance.</br>
-                            We use elements that people may expect: ability to select, collapse, get summary statistics by hovering.</br>
-                            Here of course, the number of nodes is only a sample.
+                            Remote operators have a backlog of notifications to address. We used a type of common to users: a notification center of the same type as the MacOS interface. </br>
+                            Operator can mark notifications (Dismiss/Resove/Escalate), and have associated editing tools (Undo/Redo/Share/Save). Since the focus was on visualization, we did only placed function placeholders.</br>
+                            We also intended to allow users to recall past notifications (not only current ones), hence the Live switch.
                             </p>
                             
                             <div style="display: table">
@@ -91,16 +94,25 @@
                             </div>
                             </br>
                             
-                            
-                            
-
-                            
-                            Graph
+                            <p><i>Graph:</i></br>
+                            Remote operators have a backlog of notifications to address. We used a type of common to users: a notification center of the same type as the MacOS interface. </br>
+                            Operator can mark notifications (Dismiss/Resove/Escalate), and have associated editing tools (Undo/Redo/Share/Save). Since the focus was on visualization, we did only placed function placeholders.</br>
+                            We also intended to allow users to recall past notifications (not only current ones), hence the Live switch.
+                            </p>
                             
                             <img class="center" src="/media/battery-monitoring/detailed-graph.gif">
                             </br>
                             
-                            <p><a href="http://people.ischool.berkeley.edu/~gderoo/battery-monitoring/" target="_blank">Website</a> (database may be taken down)</p>
+                            <p><b>Further improvement</b></p>
+                            <p> During user test
+                            <ul>
+                                <li>We could have further tightened the hyperparameters and let the model run to achieve a higher accuracy</li>
+                                <li>Preprocessing could also include noise, or the introduction of deformation (e.g. some photographs are not taken purely perpendicularly)</li>
+                                <li>In its current implementation, histogram equalization for RGB images may also be distorting the color balance, so adding images with different brightness may achieve better results</li>
+                            </ul></p>
+                            
+                            <img class="center" src="/media/battery-monitoring/moscow.png">
+                            </br>
                             
                             <p><a href="https://github.com/gderoo/gderoo.github.io/tree/master/media/battery-monitoring" target="_blank">GitHub repository</a></p>
                             
