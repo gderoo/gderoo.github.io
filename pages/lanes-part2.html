@@ -92,7 +92,7 @@
                             <p>There are many situations in which the current algorithm can make mistakes (sharp turns, vehicle arriving the line, etc.). Possible improvements could be to:
                             <ul>
                                 <li> Lane inialization could be done with convolutions </li>
-                                <li> Polynomial extrapolation could take further advantage of the parallelism of lanes. For example, we could constrain the polynomials to have closer coefficients (except the intercept). A rough attempt at this can be found in the poly_fit() function </li>
+                                <li> Polynomial extrapolation could take further advantage of the parallelism of lanes. For example, we could constrain the polynomials to have closer coefficients (except the intercept)</li>
                                 <li> More fail safe mechanisms could be build. Currently, there we have a search zone corresponding to an auto-regressive mean. Using a moving window could be more reactive. When averaging, we could weight based on a confidence index related to the number of lane points found </li>
                                 <li> Binary image should also be tested in more situations to make sure we have the most robust parameters (e.g. currently not using y gradient or magnitude, but could specifically isolate white and yellow colors for example)</li>
                             </ul>
