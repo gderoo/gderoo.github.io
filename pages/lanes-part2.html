@@ -59,35 +59,43 @@
                             
                             <p>There are xx main steps of the image pipeline:
                             <ul>
-                                <li> Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.</li>
-                                <li> Apply a distortion correction to raw images.</li>
-                                <li> Use color transforms, gradients, etc., to create a thresholded binary image.</li>
-                                <li> Apply a perspective transform to rectify binary image ("birds-eye view").</li>
-                                <li> Detect lane pixels and fit to find the lane boundary. </li>
-                                <li> Determine the curvature of the lane and vehicle position with respect to center. </li>
-                                <li> Warp the detected lane boundaries back onto the original image.</li>
-                                <li> Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position </li>
+                                <li> Compute the camera calibration and undistort images</li>
+                                <li> Create a binary image of shapes of interest</li>
+                                <li> Create a "bird-eye view"</li>
+                                <li> Detect lane pixels and fit a polynomial</li>
+                                <li> Determine the curvature and vehicle position</li>
                             </ul>
                             We illustrate main steps below:</p>
                             
+                            <p><b>Camera Calibration</b></br>
+                            Here we compute a matrix and distortion coefficients given a set of chessboard images, and apply a distortion correction to raw images to correct for camera distortion</p>
                             <img class="center" src="/media/lanes-part2/chessboard.png">
                             <img class="center" src="/media/lanes-part2/undistort.png">
+                            </br>
+                            <p><b>Binary image</b></br>
+                            Here we use color transforms (HLS), and gradients (angle, magnitude, etc.) to create a thresholded binary image which limits to the features of interest</p>
                             <img class="center" src="/media/lanes-part2/binarythreshold.png">
+                            </br>
+                            <p><b>Bird-eye view</b></br>
+                            Here we apply a perspective transform to rectify binary image and remove the effect of perspective ("birds-eye view")</p>
                             <img class="center" src="/media/lanes-part2/perspective.png">
+                            </br>
+                            <p><b>Lane fit</b></br>
+                            Here we identify the points belong to each lane using a sliding window technique, and fit a second degree polynomial to the points identified</p>
                             <img class="center" src="/media/lanes-part2/windowsearch.png">
+                            <p><b>Curvature and Position</b></br>
+                            Here we use curvature formula to calculate the radius of the curvature and the position of the vehicle compared to the center of the lane. We plot this information together with the space between lanes (in green) on the image</p>
                             <img class="center" src="/media/lanes-part2/fullprocess.png">
                                 
-                            <p>If the lane turns too much, the current solution does not work. Possible improvements would be to:
+                            <p><b>Potential improvements</b></p>
+                                
+                            <p>There are many situations in which the current algorithm can make mistakes (sharp turns, vehicle arriving the line, etc.). Possible improvements could be to:
                             <ul>
-                                <li> limit the angles of the Hough Lines</li>
-                                <li> do the regression at the end of the canny edge step directly</li>
-                                <li> use the continuity of directions to stabilize the algorithm <ul>
-                                    <li> for each image, we calculate the lines, together with a confidence probability (longer lines result in higher confidence)</li>
-                                    <li> At time t, the ouput lines are given by average the lines of Image t, t-1 and t-2 (for instance) weighted by the confidence and other weights </li>
-                                </ul>
-                                </li>
+                                <li> Lane inialization could be done with convolutions </li>
+                                <li> Polynomial extrapolation could take further advantage of the parallelism of lanes. For example, we could constrain the polynomials to have closer coefficients (except the intercept). A rough attempt at this can be found in the poly_fit() function </li>
+                                <li> More fail safe mechanisms could be build. Currently, there we have a search zone corresponding to an auto-regressive mean. Using a moving window could be more reactive. When averaging, we could weight based on a confidence index related to the number of lane points found </li>
+                                <li> Binary image should also be tested in more situations to make sure we have the most robust parameters (e.g. currently not using y gradient or magnitude, but could specifically isolate white and yellow colors for example)</li>
                             </ul>
-                            A more thorough solution to that problem will be built later in the degree</p>
                                         
                             <p><a href="https://github.com/gderoo/self_driving_car/blob/master/Project%204%20-%20Advanced%20Lane%20Finding/notebook.ipynb" target="_blank">GitHub repository</a></p>
                             </div>
