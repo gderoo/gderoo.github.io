@@ -68,6 +68,7 @@
                             <p>Labeled images were taken from the GTI and the KITTI vision benchmark suite. All images are 64x64 pixels. A third data set released by Udacity was not used here. In total there are 8792 images of vehicles and 8968 images of non vehicles, so only a slight imbalance. An example can be seen below</p>
                             
                             <img class="center" src="/media/vehicle-detection/original.png">
+                            </br>
 
                             <p><b>Feature Extraction</b></p>
                             
@@ -80,33 +81,32 @@
                             The result can be partially seen below for a car and non car.
                             </p>
                             
-                            <img class="center" src="/media/behavioral-cloning/augmentation.png">
-                            </br>
-                               
-                            The resulting distribution of angles is much smoother
-                            
-                            <img class="center" src="/media/behavioral-cloning/histo_after.png">
+                            <img class="center" src="/media/vehicle-detection/car_features.png">
+                            <img class="center" src="/media/vehicle-detection/notcar_features.png">
                             </br>
                             
-                            <p><b>Neural network architecture</b></p>
+                            <p><b>SVM Classification</b></p>
                             
-                            <p>For the architecture, we mostly used the architecture from a <a href="https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf" target="_blank">NVIDIA paper</a> shown below. The main modifications were to:
+                            <p>We trained a linear SVM, and nothing more complex, since we already reached an 99% accuracy on the test set. To reach this performance
                             <ul>
-                                <li>introduce a drop out at the end of the convolutional layers</li>
-                                <li>add cropping of the top and bottom of the image (car hood) before normalization</li>
+                                <li>Features were scaled across training images</li>
+                                <li>We used a GridSearch on the C parameter, with an locally optimal value found for 0.01</li>
                             </ul>
-                            </p>
+                            Here are some example of predictions</p>
                             
-                            <a href="https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf" target="_blank"><img class="center" src="/media/behavioral-cloning/nvidia-architecture.png" height="300"></a>
+                            <img class="center" src="/media/vehicle-detection/prediction.png">
                             </br>
-
+                            
+                            <p><b>SVM Classification</b></p>
+                            
                             <p>Orginally, we had used a simpler neural network with less parameters to limit overfitting. However, after the data augmentation strategy implemented above, we were able to directly implement the NVIDIA architecture which was developed to solve a similar issue.</p>
                             
-                            <p><b>Training</b></p>
-                            
-                            <p>We used a batch size of 256, with 7 epochs and 8,192 images per epoch (i.e. 32 batches per epoch). We also implemented an image generator to optimize performance.</p>
+                            <img class="center" src="/media/vehicle-detection/hotwindows.png">
+                            <img class="center" src="/media/vehicle-detection/heatmap.png">
+                            </br>
                             
                             <p><b>Further improvement</b></p>
+                            
                             <p>We notice that the car mistakes shadows for road borders and tries to avoid them (only to steer back to the middle of the road when it arrives close to the edge). This could probably be overcome by casting random shadows on the image during the data augmentation process.</p>
                             
                             <p>Below an example in which the shadow steers the car to the right of the road:</p>
