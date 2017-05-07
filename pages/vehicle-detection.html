@@ -72,7 +72,7 @@
 
                             <p><b>Feature Extraction</b></p>
                             
-                            <p>We extracted several features adding up to 6108 features (since we start from 64*64 = 4,096 some are probably redundant):
+                            <p>We extracted several features adding up to 6108 features:
                             <ul>
                             <li> Convert image to HLS and do a spatial binning to bring to (16,16)</li>
                             <li> Calculate color histogram with 32 bins by HLS channel</li>
@@ -82,7 +82,7 @@
                             </p>
                             
                             <img class="center" src="/media/vehicle-detection/car_features.png">
-                            <img class="center" src="/media/vehicle-detection/notcar_features.png">
+                            <img class="center" src="/media/vehicle-detection/nocar_features.png">
                             </br>
                             
                             <p><b>SVM Classification</b></p>
@@ -97,9 +97,15 @@
                             <img class="center" src="/media/vehicle-detection/prediction.png">
                             </br>
                             
-                            <p><b>SVM Classification</b></p>
+                            <p><b>Sliding Window Search</b></p>
                             
-                            <p>Orginally, we had used a simpler neural network with less parameters to limit overfitting. However, after the data augmentation strategy implemented above, we were able to directly implement the NVIDIA architecture which was developed to solve a similar issue.</p>
+                            <p>We used a series of windows that would follow a perspective effect because smaller cars should only be further on the horizon. In addition to this, we decided to put some randomness in the x and y origins in order to help smooth the behaviors of the detector. For each window the image then goes through the following step:
+                            <ul>
+                                <li>Content of each window is the rescaled to (64,64)</li>
+                                <li>Features and extracted, and SVM used to predict if there is a car</li>
+                                <li>For each window with a car, +1 is added to a blank image, creating a heat map</li>
+                                <li>The heat goes through a proces of thresholding, smoothing, and labelling using `scipy.ndimage.measurements.label()`</li>
+                            The result can be seen below</p>
                             
                             <img class="center" src="/media/vehicle-detection/hotwindows.png">
                             <img class="center" src="/media/vehicle-detection/heatmap.png">
@@ -107,13 +113,21 @@
                             
                             <p><b>Further improvement</b></p>
                             
-                            <p>We notice that the car mistakes shadows for road borders and tries to avoid them (only to steer back to the middle of the road when it arrives close to the edge). This could probably be overcome by casting random shadows on the image during the data augmentation process.</p>
+                            <p>There are a couple of issues we can be seen already or anticipated:
+                            <ul>
+                                <li>Risk associated to generalization of different luminosity context, etc </li>
+                                <li>Instability of window despite the smoothing and randomization techniques</li>
+                                <li>Computing speed is low</li>
+                            </ul>
+                            Potential improvements for the computing spee could be:
+                            <ul>
+                                <li>Drop some of the 6108 features (since we start from 64*64 = 4,096 some are probably redundant)</li>
+                                <li>Implement a faster HOG calculation strategy in which the HOG is calculated once for the image (i.e. not by window)</li>
+                                <li>Use a class system for each object and implement more smoothing technique on boxes</li>
+                            </ul>
+                            </p>
                             
-                            <p>Below an example in which the shadow steers the car to the right of the road:</p>
-                            <img class="center" src="/media/behavioral-cloning/shadow.png">
-                            <br />
-                            
-                            <p><a href="https://github.com/gderoo/self_driving_car/tree/master/Project%203%20-%20Behavioral%20Cloning" target="_blank">GitHub repository</a></p>
+                            <p><a href="https://github.com/gderoo/self_driving_car/tree/master/Project%205%20-%20Vehicle%20Detection" target="_blank">GitHub repository</a></p>
 
 
                             </div>
