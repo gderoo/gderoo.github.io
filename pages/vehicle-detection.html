@@ -63,35 +63,22 @@
                                         Your browser does not support the video tag.
                                         </video> <br />
                             
-                            <p><b>Data acquisition</b></p>
+                            <p><b>Data Exploration</b></p>
                             
-                            <p>Udacity has created a simulation environment in which we can drive a car. When driving, the simulator captures the driving parameters (most notably the steering angle), together with what the driver sees (front, left and right camera).</p>
+                            <p>Labeled images were taken from the GTI and the KITTI vision benchmark suite. All images are 64x64 pixels. A third data set released by Udacity was not used here. In total there are 8792 images of vehicles and 8968 images of non vehicles, so only a slight imbalance. An example can be seen below</p>
                             
-                            <img class="center" src="/media/behavioral-cloning/parameters.png">
-                            <img class="center" src="/media/behavioral-cloning/leftcenterright.png">
-                            </br>
-                            
-                            <p> After an attempt at creating manual datasets, we noticed that the results were usually jerky without a joystick. In the end, we used the dataset provided by Udacity <a href="https://d17h27t6h515a5.cloudfront.net/topher/2016/December/584f6edd_data/data.zip"> here</a>, which contained 8036 examples, and 3 times more images. </p>
-                            
-                            <p>In this dataset, we can use the side cameras to provide additional samples, by adding an angle of +/-0.2. Even so, we end up with about 4.5k images at 0, 0.2 and -0.2 degree respectively.
-                            
-                            <img class="center" src="/media/behavioral-cloning/histo_before.png">
-                            </br>
+                            <img class="center" src="/media/vehicle-detection/original.png">
 
-                            <p><b>Preprocessing</b></p>
+                            <p><b>Feature Extraction</b></p>
                             
-                            <p>To augment the data set, we did a series of operations:
+                            <p>We extracted several features adding up to 6108 features (since we start from 64*64 = 4,096 some are probably redundant):
                             <ul>
-                            <li> random shuffle of the dataset</li>
-                            <li> flipping the image horizontally in 50% of cases</li>
-                            <li> random change the brightness by a factor of 0.5 to 1.2</li>
-                            <li> random lateral shift by +/-50px, while correcting the angle</li>
-                            <li> random shearing of the image to simulate a modification of the angle of the road.</li>
+                            <li> Convert image to HLS and do a spatial binning to bring to (16,16)</li>
+                            <li> Calculate color histogram with 32 bins by HLS channel</li>
+                            <li> Calculate Histogram Oriented Graph (HOG) for each color channel</li>
                             </ul>
-                            This last transformation allows us to use even the images with an angle of 0 without overfitting for that angle, and is one of the most impactful.
+                            The result can be partially seen below for a car and non car.
                             </p>
-                            
-                            <p>Below are random examples, starting from the original in top left corner:</p>
                             
                             <img class="center" src="/media/behavioral-cloning/augmentation.png">
                             </br>
